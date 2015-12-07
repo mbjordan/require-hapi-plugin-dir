@@ -1,0 +1,22 @@
+{
+  "name": "require-hapi-plugin-dir",
+  "version": "0.1.0",
+  "description": "A simple method of requiring all files in a directory, but specifically for hapi plugins that don't require `options`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbjordan/require-hapi-plugin-dir.git"
+  },
+  "keywords": [
+    "hapi"
+  ],
+  "author": "Matt Jordan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbjordan/require-hapi-plugin-dir/issues"
+  },
+  "homepage": "https://github.com/mbjordan/require-hapi-plugin-dir#readme"
+}
