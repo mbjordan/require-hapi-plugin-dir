@@ -16,8 +16,18 @@ MyPlugins
 
 __index.js__
 
-```
-require('require-hapi-plugin-dir')(module);
+```javascript
+module.exports = require('require-hapi-plugin-dir')(module);
 ```
 
-This package simply exports each plugin as an array. _See the "load multiple plugins" example under [Loading a Plugin](http://hapijs.com/tutorials/plugins#user-content-loading-a-plugin)_.
+This package simply exports each plugin in a flat array. Given the example directory structure above, this array would be equivalent to:
+
+```javascript
+module.exports = [
+    require('./myplugin1'),
+    require('./myplugin2'),
+    require('./myplugin3')
+];
+```
+
+_See the "load multiple plugins" example under [Loading a Plugin](http://hapijs.com/tutorials/plugins#user-content-loading-a-plugin) for more info_.
