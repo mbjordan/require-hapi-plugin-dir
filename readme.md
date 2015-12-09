@@ -1,5 +1,7 @@
 ## require-hapi-plugin-dir
 
+[![Build Status](https://travis-ci.org/mbjordan/require-hapi-plugin-dir.svg?branch=master)](https://travis-ci.org/mbjordan/require-hapi-plugin-dir)
+
 A simple method of requiring all files in a directory, but specifically for [hapi](http://hapijs.com/) plugins that don't require `options`.
 
 ### Use:
