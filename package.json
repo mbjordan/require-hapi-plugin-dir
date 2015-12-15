@@ -1,6 +1,6 @@
 {
   "name": "require-hapi-plugin-dir",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple method of requiring all files in a directory, but specifically for hapi plugins that don't require `options`.",
   "main": "index.js",
   "scripts": {
@@ -19,9 +19,6 @@
     "url": "https://github.com/mbjordan/require-hapi-plugin-dir/issues"
   },
   "homepage": "https://github.com/mbjordan/require-hapi-plugin-dir#readme",
-  "dependencies": {
-    "ramda": "^0.18.0"
-  },
   "devDependencies": {
     "code": "^2.0.1",
     "lab": "^8.0.0"

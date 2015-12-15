@@ -2,7 +2,6 @@
 
 const Code = require('code');
 const Lab = require('lab');
-const R = require('ramda');
 const reqHapiPluginDir = require('../index');
 const lab = exports.lab = Lab.script();
 const describe = lab.describe;
@@ -20,13 +19,14 @@ describe('require-hapi-plugin-dir', function() {
         done();
     });
 
+    // This test and the below feel a bit pointless, but they're here nonetheless.
     it('Retrun an Array without the index.js file', function(done) {
-        expect(R.indexOf('Should not see this file', data)).to.equal(-1);
+        expect(data.indexOf('Should not see this file')).to.equal(-1);
         done();
     });
 
     it('Retrun an Array without the someDir directory', function(done) {
-        expect(R.indexOf('{}', data)).to.equal(-1);
+        expect(data.indexOf('{}')).to.equal(-1);
         done();
     });
 });

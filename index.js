@@ -2,31 +2,25 @@
 
 const fs = require('fs');
 const path = require('path');
-const R = require('ramda');
 
-function eachFile(pathObj, plugins, file) {
-    let filePath = pathObj.dir + '/' + file;
+const eachFile = function(pathObj, plugins, file) {
+    const filePath = pathObj.dir + '/' + file;
 
-    if (file === pathObj.base) {
-        return;
-    }
-
-    if (fs.statSync(filePath).isDirectory()) {
+    if (file === pathObj.base || fs.statSync(filePath).isDirectory()) {
         return;
     }
 
     plugins[plugins.length] = require(filePath);
-}
+    return plugins;
+};
 
-function requireHapiPluginDir(_module) {
+module.exports = function(_module) {
     const pathObj = path.parse(_module.filename);
-    let plugins = [];
+    const plugins = [];
 
     fs
         .readdirSync(pathObj.dir)
-        .forEach(R.partial(eachFile, [pathObj, plugins]));
+        .forEach(eachFile.bind(null, pathObj, plugins));
 
     return plugins;
-}
-
-module.exports = requireHapiPluginDir;
+};
