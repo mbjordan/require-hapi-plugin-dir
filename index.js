@@ -2,6 +2,21 @@
 
 const fs = require('fs');
 const path = require('path');
+const R = require('ramda');
+
+const eachModule = function(arr, include) {
+    arr[arr.length] = require(include);
+};
+
+const getPluginsArr = function(includes) {
+    const arr = [];
+
+    if (R.is(Array, includes)) {
+        R.forEach(R.partial(eachModule, [arr]), includes);
+    }
+
+    return arr;
+};
 
 const eachFile = function(pathObj, plugins, file) {
     const filePath = pathObj.dir + '/' + file;
@@ -11,16 +26,16 @@ const eachFile = function(pathObj, plugins, file) {
     }
 
     plugins[plugins.length] = require(filePath);
-    return plugins;
 };
 
-module.exports = function(_module) {
-    const pathObj = path.parse(_module.filename);
-    const plugins = [];
+module.exports = function(m, includes) {
+    const pathObj = path.parse(m.filename);
+    const plugins = getPluginsArr(includes);
 
-    fs
-        .readdirSync(pathObj.dir)
-        .forEach(eachFile.bind(null, pathObj, plugins));
+    R.forEach(
+        R.partial(eachFile, [pathObj, plugins]),
+        fs.readdirSync(pathObj.dir)
+    );
 
     return plugins;
 };
