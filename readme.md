@@ -55,12 +55,12 @@ Which would present as:
 
 ```javascript
 module.exports = [
-    require('./myplugin1'),
-    require('./myplugin2'),
-    require('./myplugin3'),
     require('./mypluginA'),
     require('./mypluginB'),
-    require('./mypluginC')
+    require('./mypluginC'),
+    require('./myplugin1'),
+    require('./myplugin2'),
+    require('./myplugin3')
 ];
 ```
 
@@ -68,10 +68,16 @@ module.exports = [
 
 ## API
 
-
 ### `reqHapiPluginDir(module[, options]);`
 
-* __`module`__ -  Node's `module` object contains a property named `filename`, thus it is important to pass this object from the `index.js` file which is being called.
-* `options` - _optional_
-    * `include` - An array of hapi plugins to include manually.
-    * `flat` - If set to true, the above directory structure would only include files from `MyPlugins` and completely ignore the `MyOtherPlugins` directory. _Default: false_
+#### `module`
+
+Node's `module` object contains a property named `filename`, thus it is important to pass this object from the `index.js` file which is being called.
+
+
+#### `options`
+
+_optional_ options (haha!) object.
+
+* `include` - An array of hapi plugins to include manually.
+* `flat` - If set to true, the above directory structure would only include files from `MyPlugins` and completely ignore the `MyOtherPlugins` directory. _Default: false_.
