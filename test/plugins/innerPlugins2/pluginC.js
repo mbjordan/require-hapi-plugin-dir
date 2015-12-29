@@ -5,6 +5,6 @@ exports.register = function(server, options, next) {
 };
 
 exports.register.attributes = {
-    'name': 'someDirPlugin',
+    'name': 'pluginC',
     'version': '0.1.0'
 };
